@@ -10,6 +10,7 @@
             </div>
             <form wire:submit.prevent="saveStavka">
                 <div class="modal-body">
+                
                     <div class="mb-3">
                         <label>Naziv</label>
                         <input type="text" wire:model="name" class="form-control">
@@ -60,9 +61,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>
+            @if(session('status1'))
+                    <div class="alert alert-success">
+                        {{session('status1')}}
+                    </div>
+                    
+                    @endif
             <form wire:submit="updateStavka">
                 <div class="modal-body">
-                    <div class="mb-3">
+                <div class="mb-3">
                         <label>Naziv</label>
                         <input type="text" wire:model="name" class="form-control">
                         @error('name') <span class="text-danger">{{ $message }}</span> @enderror
@@ -74,21 +81,23 @@
                     </div>
                     <div class="mb-3">
                         <label>Količina</label>
-                        <input type="text" wire:model="email" class="form-control">
+                        <input type="number" wire:model="quantity" class="form-control">
                         @error('quantity') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label>Cijena</label>
-                        <input type="text" wire:model="course" class="form-control">
+                        <input type="number" wire:model="price" class="form-control">
                         @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-
                     <div class="mb-3">
                         <label>Datum dodavanja</label>
                         <input type="date" wire:model="added_date" class="form-control">
+              
+
                         @error('added_date') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="closeModal"
                         data-bs-dismiss="modal">Close</button>
@@ -109,14 +118,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal"
                     aria-label="Close"></button>
             </div>
+           
             <form wire:submit.prevent="destroyStavka">
                 <div class="modal-body">
+               
                     <h4>Are you sure you want to delete this data ?</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="closeModal"
                         data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Yes! Delete</button>
+               
                 </div>
             </form>
         </div>

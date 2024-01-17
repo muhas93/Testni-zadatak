@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->date('added_date')->now();
-    
+            //$table->timestamp('added_date')->default(now());
         });
     }
 
